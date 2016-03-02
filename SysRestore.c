@@ -70,7 +70,7 @@ int Begin(BOOL Uninstaller)
 	SecureZeroMemory(&SMgrStatus, sizeof(STATEMGRSTATUS));
 
 	/*  Initialize the RESTOREPOINTINFO structure. */
-	pRestPtInfo->dwEventType = BEGIN_SYSTEM_CHANGE;
+	pRestPtInfo->dwEventType = BEGIN_NESTED_SYSTEM_CHANGE;
 
 	/*  Notify the system that changes are about to be made.
 	An application is to be installed (or uninstalled). */
@@ -94,7 +94,7 @@ int Finish(void)
 {
 	/*  Re-initialize the RESTOREPOINTINFO structure to notify the
 	system that the operation is finished. */
-	pRestPtInfo->dwEventType = END_SYSTEM_CHANGE;
+	pRestPtInfo->dwEventType = END_NESTED_SYSTEM_CHANGE;
 
 	/*  End the system change by returning the sequence number
 	received from the first call to SRSetRestorePoint. */
